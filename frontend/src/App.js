@@ -1,12 +1,16 @@
 import './App.css';
-// import React from 'react';
-// import 'bootstrap/dis/css/bootstrap/min.css';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Student from './Components/Student';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './Components/NavBar';
+import SideBar from './Components/SideBar';
 
 function App() {
-  return (
-    <></>
-  );
+  return(<>
+    <NavBar/>
+    <SideBar/>
+  </>);
 }
 
 export default App;
