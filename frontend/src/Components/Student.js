@@ -1,4 +1,2 @@
-function Student(){
-    return<></>
-}
+function Student() {}
 export default Student;
