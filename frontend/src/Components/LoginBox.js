@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
+// import React, { useEffect } from "react";
+import { useState } from "react";
 import TextField from "./TextField";
-import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const LoginBox = () => {
@@ -10,15 +8,7 @@ const LoginBox = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const loginCheck = "SELECT Password FROM auth where User = " + username;
-
   const nav = useNavigate();
-  useEffect(() => {
-    axios
-      .get("localhost:3000")
-      .then((res) => console.log(res))
-      .catch((err) => console.log("Error: " + err));
-  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -126,7 +116,7 @@ const LoginBox = () => {
           {isLoading ? (
             <>
               <div
-                onClick={nav("/home")}
+                onClick={nav("/homepage")}
                 style={{
                   width: "16px",
                   height: "16px",

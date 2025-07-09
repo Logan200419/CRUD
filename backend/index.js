@@ -12,12 +12,17 @@ const db = mysql.createConnection({
   database: "crud",
 });
 
+
+App.get("/api/loginVerification",(req,res)=>{
+  db.query
+})
+
 // App.get("/",(req,res)=>{
 //     res.json("Hello from backend");
 // })
 
 App.get("/", (req, res) => {
-  db.query("SELECT * FROM students", (err, data) => {
+  db.query("SELECT * FROM auth", (err, data) => {
     if (err) {
       return res.json("Error mah boii go check the code again");
     }
