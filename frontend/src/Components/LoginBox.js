@@ -116,7 +116,7 @@ const LoginBox = () => {
           {isLoading ? (
             <>
               <div
-                onClick={nav("/homepage")}
+                onClick={nav("/dashboard")}
                 style={{
                   width: "16px",
                   height: "16px",

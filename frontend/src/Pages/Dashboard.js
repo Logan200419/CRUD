@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import NavBar from "../Components/NavBar";
-import SideBar from "../Components/SideBar";
 import "./Homepage.css";
+import { useState } from "react";
 
 function HomePage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedModule, setSelectedModule] = useState("Homepage");
 
   // Sample data for dashboard
@@ -16,7 +14,7 @@ function HomePage() {
   };
 
   const sidebarItems = [
-    { id: "homepage", name: "Homepage", icon: "🏠" },
+    { id: "dashboard", name: "Dashboard", icon: "📺" },
     { id: "student-management", name: "Student Management", icon: "👥" },
     { id: "course-management", name: "Course Management", icon: "📚" },
     { id: "accounts", name: "Accounts", icon: "💰" },

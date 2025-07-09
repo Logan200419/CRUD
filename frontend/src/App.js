@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./Pages/Loginpage";
-import HomePage from "./Pages/Homepage";
+import HomePage from "./Pages/Dashboard";
 import { Navigate } from "react-router-dom";
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/homepage" element={<HomePage />}></Route>
+        <Route path="/dashboard" element={<HomePage />}></Route>
       </Routes>
     </BrowserRouter>
   );
