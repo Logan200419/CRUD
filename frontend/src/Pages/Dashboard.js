@@ -2,7 +2,7 @@ import "./Homepage.css";
 import { useState } from "react";
 
 function HomePage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedModule, setSelectedModule] = useState("Homepage");
 
   // Sample data for dashboard
