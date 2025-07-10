@@ -21,8 +21,9 @@ const LoginBox = () => {
         Password: password,
       });
       // Assuming the API returns the correct password in res.data.Password
-      if (password === "123456789") {
-        nav("/dashboard");
+      console.log(res.data);
+      if (password == res.data["password"]) {
+        nav("/about");
       } else {
         setError("Invalid username or password.");
       }
