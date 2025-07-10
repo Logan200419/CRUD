@@ -1,33 +1,52 @@
 const express = require("express");
 const cors = require("cors");
-const mysql = require("mysql");
+const mysql = require("mysql2/promise");
 
 const App = express();
 App.use(cors());
+// App.use(express.json());
 
-const db = mysql.createConnection({
+const db = {
   host: "localhost",
   user: "root",
   password: "",
   database: "crud",
+};
+
+let connection;
+
+async function initDB() {
+  connection = await mysql.createConnection(db);
+  console.log("Connected to DB");
+}
+initDB().catch(console.error);
+
+App.post("/apilogin", async (req, res) => {
+  const { Username } = req.body;
+  try {
+    const [rows] = await connection.execute(
+      "SELECT Password FROM auth WHERE Username = ?",
+      [Username]
+    );
+
+    if (rows.length > 0) {
+      return res.json({ password: rows[0].Password });
+    } else {
+      return res.status(404).json({ message: "User not found" });
+    }
+  } catch (err) {
+    console.error("Database error:", err);
+    return res.status(500).json({ message: "Server error" });
+  }
 });
 
-
-App.get("/api/loginVerification",(req,res)=>{
-  db.query
-})
-
-// App.get("/",(req,res)=>{
-//     res.json("Hello from backend");
-// })
-
-App.get("/", (req, res) => {
-  db.query("SELECT * FROM auth", (err, data) => {
-    if (err) {
-      return res.json("Error mah boii go check the code again");
-    }
-    return res.json(data);
-  });
+App.get("/", async (req, res) => {
+  try {
+    const [rows] = await connection.execute("SELECT * FROM auth");
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching data" });
+  }
 });
 
 App.listen(8081, () => {

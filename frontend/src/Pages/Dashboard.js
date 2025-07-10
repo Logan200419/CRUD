@@ -1,4 +1,4 @@
-import "./Homepage.css";
+import "../Assets/Homepage.css";
 import { useState } from "react";
 
 function HomePage() {

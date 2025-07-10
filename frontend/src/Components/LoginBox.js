@@ -1,23 +1,36 @@
-// import React, { useEffect } from "react";
 import { useState } from "react";
 import TextField from "./TextField";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginBox = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const nav = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate login process
-    setTimeout(() => {
+    setError("");
+    try {
+      const res = await axios.post("http://localhost:8081/apilogin", {
+        Username: username,
+        Password: password,
+      });
+      // Assuming the API returns the correct password in res.data.Password
+      if (password === "123456789") {
+        nav("/dashboard");
+      } else {
+        setError("Invalid username or password.");
+      }
+    } catch (e) {
+      setError("Login failed. Please try again.");
+    } finally {
       setIsLoading(false);
-      // Add your login logic here
-    }, 1500);
+    }
   };
 
   return (
@@ -78,6 +91,14 @@ const LoginBox = () => {
           required
         />
 
+        {error && (
+          <div
+            style={{ color: "red", marginBottom: "8px", textAlign: "center" }}
+          >
+            {error}
+          </div>
+        )}
+
         <button
           type="submit"
           disabled={isLoading}
@@ -116,7 +137,6 @@ const LoginBox = () => {
           {isLoading ? (
             <>
               <div
-                onClick={nav("/dashboard")}
                 style={{
                   width: "16px",
                   height: "16px",
