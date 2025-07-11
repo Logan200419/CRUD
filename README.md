@@ -2,7 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To run this application you must move into frontend and backend folders and manually install node modules.
+To run this application you must:
+1. Move into frontend and backend folders and manually install node modules.
+2. While being in the frontend folder run "npm start"
+3. While being in the backend folder run "node index.js"
 
 ## Available Scripts
 
